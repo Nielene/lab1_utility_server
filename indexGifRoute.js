@@ -1,25 +1,39 @@
 const express = require('express');
 const axios = require('axios')
-const bodyParser = require('body-parser')
+// const bodyParser = require('body-parser')
 
 const app = express();
 
 
-console.log("hello");
-const getGif = (req, res) => {
-  axios.get(`http://api.giphy.com/v1/gifs/search?${req.query.search}q=ryan+gosling&api_key=YOUR_API_KEY&limit=5`)
+app.get('/gif', (req, res)=> {
+  // console.log("hello");
+  axios.get(`http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=OGaVltGGRCT5katku82B1s4VgQ1jno1H&limit=5`)
   .then (response => {
-    res.gif =response.data
-    // res.json(response.data)
-    
+    // console.log(response);
+    // res.gif = response.data
+    // console.log(response.data);
+    let data = response.data.data
+    let emptyArr = []
+    let imageUrl = "fixed_height_still";
+    data.forEach(object => {
+      emptyArr.push(object.images)
+      // res.json([Object.values(object.id)])
+      // res.json([Object.values(object.images)])
+      // res.json(emptyArr.push(object.images.imageUrl.url))
+    })
+    res.json(emptyArr)
+    // res.json(response.data.data)
+    // res.json(Object.values())
   })
-}
+})
 
-app.get('/gif', getGif)
+app.get('/*', (req, res) => {
+  res.json({message: "Error"})
+})
 
 
-app.listen(1000, () => {
-  console.log("Port 1000");
+app.listen(3000, () => {
+  console.log("Port 3000");
 })
 
 // app.get('/gif', (req, res)=> {

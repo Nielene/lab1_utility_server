@@ -85,7 +85,12 @@ Your response should be like the following:
 - Parse through their results.
 - Respond back with an array of ONLY the direct GIF image URL. Where the image URL ends with `.gif`
 
+//========
+my api key:
+https://developers.giphy.com/dashboard/
+OGaVltGGRCT5katku82B1s4VgQ1jno1H
 
+http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=OGaVltGGRCT5katku82B1s4VgQ1jno1H&limit=5
 
 //-------------
 Lesson:
